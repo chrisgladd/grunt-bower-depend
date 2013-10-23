@@ -31,33 +31,27 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     bower_depend: {
       default_options: {
-        options: {  },
-        //files: {
-          //'tmp/default_options': [
-            //'test/fixtures/testing', 
-            //'test/fixtures/123'
-          //],
-        //},
+        options: {  }
       },
       custom_options: {
-        //options: {
-          //separator: ': ',
-          //punctuation: ' !!!',
-        //},
-        //files: {
-          //'tmp/custom_options': [
-            //'test/fixtures/testing',
-            //'test/fixtures/123'
-          //],
-        //},
+        options: {
+          copy: true
+        },
+        files: [{
+          'expand': true,
+          'cwd': 'bower_components/jquery/',
+          'src': ['jquery.js'],
+          'dest': 'tmp/lib/'
+        }],
       },
     },
 
     // Unit tests.
     nodeunit: {
-      tests: ['test/*_test.js'],
-    },
-
+      tests: ['test/default_test.js'],
+      default_options: ['test/default_test.js'],
+      custom_options: ['test/custom_test.js']
+    }
   });
 
   // Actually load this plugin's task(s).
@@ -72,6 +66,14 @@ module.exports = function(grunt) {
   // then run this plugin's task(s), then test the result.
   grunt.registerTask('test', ['clean', 'bower_depend', 'nodeunit']);
 
+  grunt.registerTask('testAll', ['clean', 
+                                 'bower_depend:default_options', 
+                                 'nodeunit:default_options',
+
+                                 'clean',
+                                 'bower_depend:custom_options', 
+                                 'nodeunit:custom_options']);
+
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('default', ['jshint', 'testAll']);
 };

@@ -32,17 +32,8 @@ exports.bower_depend = {
 
     test.equal(grunt.file.exists("bower_components/jquery/jquery.js"), true, 'should have installed jquery');
 
-    test.equal(grunt.file.exists("lib/jquery.js"), false, 'should not have copied jquery into library');
+    test.equal(grunt.file.exists("tmp/lib/jquery.js"), false, 'should not have copied any library');
 
-    test.done();
-  },
-  custom_options: function(test) {
-    test.expect(1);
-
-    test.equal(grunt.file.exists("bower_components/jquery/jquery.js"), true, 'should have installed jquery');
-
-    //test.equal(grunt.file.exists("lib/jquery.js"), true, 'should have copied the targeted library');
- 
     test.done();
   },
 };
