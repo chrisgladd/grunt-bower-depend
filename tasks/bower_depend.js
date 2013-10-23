@@ -14,7 +14,33 @@ module.exports = function(grunt) {
   // creation: http://gruntjs.com/creating-tasks
 
   grunt.registerMultiTask('bower_depend', 'Handle Bower Dependencies', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
+
+    //Load bower
+    var bower = require('bower');
+    //Load a renderer for output
+    var renderer = new (require('bower/lib/renderers/StandardRenderer'))('install',{color:true,cwd:process.cwd()});
+    //Asynchonous onFinish function for grunt
+    var done = this.async();
+
+    bower.commands.install()
+    .on('log',function(log){
+      renderer.log(log);
+    })
+    .on('prompt',function(prompt,callback){
+      renderer.prompt(prompt).then(function(answer){
+        callback(answer);
+      });
+    })
+    .on('error',function(err){
+      renderer.error(err);
+      done(false);
+    })
+    .on('end',function(data){
+      renderer.end(data);
+      done();
+    });
+
+    /*// Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       punctuation: '.',
       separator: ', '
@@ -44,7 +70,6 @@ module.exports = function(grunt) {
 
       // Print a success message.
       grunt.log.writeln('File "' + f.dest + '" created.');
-    });
+    });*/
   });
-
 };

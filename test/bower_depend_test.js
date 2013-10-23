@@ -28,21 +28,21 @@ exports.bower_depend = {
     done();
   },
   default_options: function(test) {
-    test.expect(1);
+    test.expect(2);
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    test.equal(grunt.file.exists("bower_components/jquery/jquery.js"), true, 'should have installed jquery');
+
+    test.equal(grunt.file.exists("lib/jquery.js"), false, 'should not have copied jquery into library');
 
     test.done();
   },
   custom_options: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+    test.equal(grunt.file.exists("bower_components/jquery/jquery.js"), true, 'should have installed jquery');
 
+    //test.equal(grunt.file.exists("lib/jquery.js"), true, 'should have copied the targeted library');
+ 
     test.done();
   },
 };

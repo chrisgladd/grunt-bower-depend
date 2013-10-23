@@ -25,26 +25,31 @@ module.exports = function(grunt) {
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp'],
+      tests: ['tmp', 'bower_components'],
     },
 
     // Configuration to be run (and then tested).
     bower_depend: {
       default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+        options: {  },
+        //files: {
+          //'tmp/default_options': [
+            //'test/fixtures/testing', 
+            //'test/fixtures/123'
+          //],
+        //},
       },
       custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!',
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+        //options: {
+          //separator: ': ',
+          //punctuation: ' !!!',
+        //},
+        //files: {
+          //'tmp/custom_options': [
+            //'test/fixtures/testing',
+            //'test/fixtures/123'
+          //],
+        //},
       },
     },
 
@@ -63,11 +68,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
-  // plugin's task(s), then test the result.
+  // Whenever the "test" task is run, first clean the "tmp" dir,
+  // then run this plugin's task(s), then test the result.
   grunt.registerTask('test', ['clean', 'bower_depend', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
-
 };
