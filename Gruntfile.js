@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         files: [{
           'expand': true,
           'cwd': 'bower_components/jquery/',
-          'src': ['jquery.js'],
+          'src': ['jquery.*js'],
           'dest': 'tmp/lib/'
         }]
       }

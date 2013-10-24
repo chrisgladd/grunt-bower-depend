@@ -49,6 +49,8 @@ module.exports = function(grunt) {
     var onInstallFinished = function(data){
       renderer.end(data);
 
+      // Canibalized from grunt-contrib-copy
+      // https://github.com/gruntjs/grunt-contrib-copy
       if(options.copy === true){
 
         // We need to refresh the files based on the bower install
@@ -88,6 +90,8 @@ module.exports = function(grunt) {
     .on('end', onInstallFinished);
   });
 
+  // Re-used methods from grunt-contrib-copy
+  // https://github.com/gruntjs/grunt-contrib-copy
   var detectDestType = function(dest) {
     if (grunt.util._.endsWith(dest, '/')) {
       return 'directory';

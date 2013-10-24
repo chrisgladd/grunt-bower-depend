@@ -28,11 +28,13 @@ exports.custom_options = {
     done();
   },
   custom_options: function(test) {
-    test.expect(2);
+    test.expect(3);
 
     test.equal(grunt.file.exists("bower_components/jquery/jquery.js"), true, 'should have installed jquery');
 
     test.equal(grunt.file.exists("tmp/lib/jquery.js"), true, 'should have copied the targeted library');
+
+    test.equal(grunt.file.exists("tmp/lib/jquery.min.js"), true, 'should have copied the targeted library');
  
     test.done();
   }

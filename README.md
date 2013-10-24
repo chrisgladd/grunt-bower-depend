@@ -27,9 +27,16 @@ grunt.initConfig({
   bower_depend: {
     options: {
       // Task-specific options go here.
+      copy: true
     },
     your_target: {
       // Target-specific file lists and/or options go here.
+      files: [{
+        'expand': true,
+        'cwd': 'bower_components/jquery/',
+        'src': ['jquery.*js'],
+        'dest': 'tmp/lib/'
+      }]
     },
   },
 })
@@ -37,47 +44,38 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.copy
+Type: `Boolean`
+Default value: `false`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+A boolean value for whether to copy dependencies installed via bower
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+In this example, the default option simply executes the `bower install` command.
 
 ```js
 grunt.initConfig({
   bower_depend: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+    options: {}
   },
 })
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
+In this example, the default `bower install` command is executed, then since the `copy` option is `true` the specified files are copied from the new bower_components into the lib folder.
 grunt.initConfig({
   bower_depend: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+      copy: true
     },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+    files: [{
+      'expand': true,
+      'cwd': 'bower_components/jquery/',
+      'src': ['jquery.*js'],
+      'dest': 'tmp/lib/'
+    }]
   },
 })
 ```
@@ -86,4 +84,4 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+ * 2013-10-24   v0.1.0   Initial Release with install and copy functionality
