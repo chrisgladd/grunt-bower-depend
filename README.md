@@ -1,6 +1,6 @@
 # grunt-bower-depend
 
-> Handle Bower Dependencies
+> Handle Bower dependencies via Grunt. This task allows you to run `bower install` from Grunt and then copy specific library files wherever they're needed in your application with a single task.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
