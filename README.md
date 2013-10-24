@@ -65,6 +65,8 @@ grunt.initConfig({
 
 #### Custom Options
 In this example, the default `bower install` command is executed, then since the `copy` option is `true` the specified files are copied from the new bower_components into the lib folder.
+
+```js
 grunt.initConfig({
   bower_depend: {
     options: {
