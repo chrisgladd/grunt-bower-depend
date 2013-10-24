@@ -31,6 +31,7 @@ module.exports = function(grunt) {
     //Asynchonous onFinish function for grunt
     var done = this.async();
     var files = this.files;
+    var fileData = this.data;
 
     var onInstallLog = function(log){ renderer.log(log); };
 
@@ -48,8 +49,12 @@ module.exports = function(grunt) {
     var onInstallFinished = function(data){
       renderer.end(data);
 
-      grunt.verbose.writeln("COPY: " + options.copy);
       if(options.copy === true){
+
+        // We need to refresh the files based on the bower install
+        // before we can copy them
+        var files = grunt.task.normalizeMultiTaskFiles(fileData);
+
         var dest, isExpandedPair;
         files.forEach(function(filePair) {
           isExpandedPair = filePair.orig.expand || false;

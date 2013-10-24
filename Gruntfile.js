@@ -42,8 +42,8 @@ module.exports = function(grunt) {
           'cwd': 'bower_components/jquery/',
           'src': ['jquery.js'],
           'dest': 'tmp/lib/'
-        }],
-      },
+        }]
+      }
     },
 
     // Unit tests.
@@ -64,9 +64,7 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir,
   // then run this plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'bower_depend', 'nodeunit']);
-
-  grunt.registerTask('testAll', ['clean', 
+  grunt.registerTask('test', ['clean', 
                                  'bower_depend:default_options', 
                                  'nodeunit:default_options',
 
@@ -75,5 +73,5 @@ module.exports = function(grunt) {
                                  'nodeunit:custom_options']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'testAll']);
+  grunt.registerTask('default', ['jshint', 'test']);
 };
