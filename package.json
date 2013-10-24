@@ -1,7 +1,7 @@
 {
   "name": "grunt-bower-depend",
   "description": "Handle Bower Dependencies",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/chrisgladd/grunt-bower-depend",
   "author": {
     "name": "Chris Gladd",
@@ -39,6 +39,6 @@
     "bower": "~1.2.7"
   },
   "keywords": [
-    "bower", "install", "dependencies"
+    "gruntplugin", "bower", "install", "dependencies"
   ]
 }
