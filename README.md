@@ -23,23 +23,21 @@ grunt.loadNpmTasks('grunt-bower-depend');
 In your project's Gruntfile, add a section named `bower_depend` to the data object passed into `grunt.initConfig()`.
 
 ```js
-grunt.initConfig({
-  bower_depend: {
-    options: {
-      // Task-specific options go here.
-      copy: true
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-      files: [{
-        'expand': true,
-        'cwd': 'bower_components/jquery/',
-        'src': ['jquery.*js'],
-        'dest': 'tmp/lib/'
-      }]
-    },
+bower_depend: {
+  options: {
+    // Task-specific options go here.
+    copy: true
   },
-})
+  your_target: {
+    // Target-specific file lists and/or options go here.
+    files: [{
+      'expand': true,
+      'cwd': 'bower_components/jquery/',
+      'src': ['jquery.*js'],
+      'dest': 'tmp/lib/'
+    }]
+  },
+}
 ```
 
 ### Options
@@ -56,34 +54,33 @@ A boolean value for whether to copy dependencies installed via bower
 In this example, the default option simply executes the `bower install` command.
 
 ```js
-grunt.initConfig({
-  bower_depend: {
-    options: {}
-  },
-})
+bower_depend: {
+  options: {}
+}
 ```
 
 #### Custom Options
 In this example, the default `bower install` command is executed, then since the `copy` option is `true` the specified files are copied from the new bower_components into the lib folder.
 
 ```js
-grunt.initConfig({
-  bower_depend: {
-    options: {
-      copy: true
-    },
+bower_depend: {
+  options: {
+    copy: true
+  },
+  your_target: {
     files: [{
       'expand': true,
       'cwd': 'bower_components/jquery/',
       'src': ['jquery.*js'],
       'dest': 'tmp/lib/'
     }]
-  },
-})
+  }
+}
 ```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+ * 2013-11-09   v0.1.1   Updated README.md and Gruntfile.js
  * 2013-10-24   v0.1.0   Initial Release with install and copy functionality

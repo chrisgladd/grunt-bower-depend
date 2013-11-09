@@ -17,8 +17,7 @@ module.exports = function(grunt) {
 
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
-
-  grunt.registerMultiTask('bower_depend', 'Handle Bower Dependencies', function() {
+  grunt.registerMultiTask('bower_depend', 'Handle Bower Dependencies', function(){
 
     var options = this.options({
       "encoding": grunt.file.defaultEncoding
@@ -28,6 +27,7 @@ module.exports = function(grunt) {
 
     //Load a renderer for output
     var renderer = new (require('bower/lib/renderers/StandardRenderer'))('install',{color:true,cwd:process.cwd()});
+
     //Asynchonous onFinish function for grunt
     var done = this.async();
     var files = this.files;
@@ -73,6 +73,7 @@ module.exports = function(grunt) {
               grunt.verbose.writeln('Creating ' + dest.cyan);
               grunt.file.mkdir(dest);
             }else{
+              //if(grunt.file.exists(src)){
               grunt.verbose.writeln('Copying ' + src.cyan + ' -> ' + dest.cyan);
               grunt.file.copy(src, dest, options);
             }
@@ -84,10 +85,10 @@ module.exports = function(grunt) {
     };
 
     bower.commands.install()
-    .on('log', onInstallLog)
-    .on('prompt', onInstallPrompt)
-    .on('error', onInstallError)
-    .on('end', onInstallFinished);
+      .on('log', onInstallLog)
+      .on('prompt', onInstallPrompt)
+      .on('error', onInstallError)
+      .on('end', onInstallFinished);
   });
 
   // Re-used methods from grunt-contrib-copy
