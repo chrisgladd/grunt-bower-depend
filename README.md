@@ -82,5 +82,6 @@ bower_depend: {
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+ * 2013-11-09   v0.1.2   Updated Bower to version ~1.3.x
  * 2013-11-09   v0.1.1   Updated README.md and Gruntfile.js
  * 2013-10-24   v0.1.0   Initial Release with install and copy functionality

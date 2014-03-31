@@ -1,6 +1,6 @@
 {
   "name": "grunt-bower-depend",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "homepage": "https://github.com/chrisgladd/grunt-bower-depend",
   "authors": [
     "Chris Gladd <cmg301@gmail.com>"
